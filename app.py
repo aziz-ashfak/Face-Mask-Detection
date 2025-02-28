@@ -20,6 +20,15 @@ model = YOLO("best_model/best.onnx")
 # Webcam control
 cap = None
 
+def check_camera(index=0):
+    """Check if the camera is available."""
+    temp_cap = cv2.VideoCapture(index)
+    if not temp_cap.isOpened():
+        temp_cap.release()
+        return False
+    temp_cap.release()
+    return True
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -28,29 +37,36 @@ def index():
 def toggle_webcam():
     global cap
     action = request.json.get("action")
-    
+
     if action == "start":
         if cap is None or not cap.isOpened():
-            cap = cv2.VideoCapture(0)
-        return jsonify({"status": "started"})
+            if check_camera(0):  # Ensure camera is available
+                cap = cv2.VideoCapture(0)
+                return jsonify({"status": "started"})
+            else:
+                return jsonify({"status": "error", "message": "Camera not available"})
+        return jsonify({"status": "already started"})
+
     elif action == "stop":
         if cap is not None and cap.isOpened():
             cap.release()
             cap = None
         return jsonify({"status": "stopped"})
-    
+
     return jsonify({"status": "invalid action"})
 
 def generate_frames():
     global cap
     if cap is None:
         cap = cv2.VideoCapture(0)  # Reopen if closed
+        if not cap.isOpened():
+            return
 
     while cap.isOpened():
         success, frame = cap.read()
         if not success:
             break
-        
+
         results = model(frame)
         for result in results:
             plotted_img = result.plot()
@@ -61,6 +77,7 @@ def generate_frames():
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
 
+    cap.release()  # Ensure camera is released when loop ends
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -77,6 +94,9 @@ def upload():
 
     # Read and process image
     img = cv2.imread(filepath)
+    if img is None:
+        return "Error loading image!"
+
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = model(img)
 
@@ -95,4 +115,5 @@ def video_feed():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
