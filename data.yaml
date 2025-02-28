@@ -1,0 +1,9 @@
+
+train : ../artifacts/data_ingestion/YoloDataset/train_set
+val :  ../artifacts/data_ingestion/YoloDataset/test_set
+nc : 3 
+names : [
+        'with_mask',
+        'mask_weared_incorrect',
+        'without_mask'
+        ]
