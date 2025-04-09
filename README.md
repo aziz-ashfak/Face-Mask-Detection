@@ -1,5 +1,5 @@
 
-# Face Musk Deection
+# Face Mask Deection
 This project implements a **Face Mask Detection System** using **YOLO** for real-time detection. It includes data preprocessing, model training, live detection, and a web interface built with Flask.
 
 ## 📌 Features
@@ -131,10 +131,10 @@ python app.py
 ```bash 
 link : www.render.com
 ```
-## Use Face-Musk-Detection web-service link
+## Use Face-Mask-Detection web-service link
 
 ```bash
- https://face-musk-detection.onrender.com
+ https://face-mask-detection.onrender.com
 ```
 ## Contributing
 If you would like to contribute, please fork the repository and submit a pull request.
