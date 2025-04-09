@@ -112,11 +112,11 @@ https://www.kaggle.com/code/azizashfak/face-mask-detection-full-notebook
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone <https://github.com/aziz-ashfak/Face-Musk-Detection.git>
+   git clone <https://github.com/aziz-ashfak/Face-Mask-Detection.git>
    ```
 2. Navigate to the project directory:
    ```bash
-   cd <Face-Musk-Detection>
+   cd <Face-Mask-Detection>
    ```
 3. Install dependencies:
    ```bash
