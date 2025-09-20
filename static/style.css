@@ -1,44 +1,197 @@
+/* =======================
+   Global Styles & Theme
+======================= */
+:root {
+    --primary: #4cafef;
+    --primary-dark: #2196f3;
+    --secondary: #1e1e2f;
+    --white: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.15);
+    --radius: 14px;
+    --transition: all 0.3s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary);
+    overflow: hidden;
+    position: relative;
 }
 
+/* =======================
+   Animated Background
+======================= */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 180deg,
+        #1d2b64,
+        #f8cdda,
+        #2196f3,
+        #f48fb1,
+        #1d2b64
+    );
+    animation: spin 18s linear infinite;
+    z-index: -2;
+}
+
+body::after {
+    filter: blur(120px);
+    animation-duration: 28s;
+    opacity: 0.8;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* =======================
+   Container with Glass Effect
+======================= */
 .container {
-    width: 60%;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 750px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 35px;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 32px var(--shadow);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: var(--transition);
+    text-align: center;
+    z-index: 1;
 }
 
+.container:hover {
+    transform: translateY(-6px);
+}
+
+/* =======================
+   Headings
+======================= */
 h1, h2 {
-    color: #333;
+    color: var(--white);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
 }
 
-img {
-    border-radius: 10px;
-    margin-top: 10px;
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255,255,255,0.4);
+    display: inline-block;
+    padding-bottom: 8px;
 }
 
+/* =======================
+   Form Elements
+======================= */
 form {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
 }
 
-input[type="file"] {
-    padding: 10px;
+input[type="file"],
+input[type="text"],
+textarea {
+    padding: 14px;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
 }
 
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 12px rgba(76, 175, 239, 0.7);
+}
+
+/* =======================
+   Buttons
+======================= */
 button {
-    padding: 10px 20px;
+    padding: 14px 32px;
     border: none;
-    background: #28a745;
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    box-shadow: 0px 6px 14px rgba(76, 175, 239, 0.4);
 }
 
 button:hover {
-    background: #218838;
+    background: var(--primary-dark);
+    transform: scale(1.08);
+    box-shadow: 0px 10px 22px rgba(33, 150, 243, 0.55);
 }
+
+/* =======================
+   Images
+======================= */
+img {
+    border-radius: var(--radius);
+    margin-top: 20px;
+    max-width: 100%;
+    box-shadow: 0px 4px 14px var(--shadow);
+    transition: var(--transition);
+}
+
+img:hover {
+    transform: scale(1.04);
+}
+
+/* =======================
+   Responsive Design
+======================= */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
