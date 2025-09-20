@@ -31,7 +31,7 @@ seaborn==0.13.2
 # Flask for deployment
 Flask==3.0.2
 Flask-Cors==4.0.0
-
+gunicorn==21.2.0
 # Miscellaneous
 tqdm==4.66.2       # Progress bars
 pyyaml==6.0.1      # Config management
