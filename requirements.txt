@@ -1,24 +1,37 @@
 # Core dependencies
-tensorflow==2.15.0  
-torch==2.2.0  
+tensorflow==2.15.0
+torch==2.2.0
 torchvision==0.17.0
-gdown  # Downloading files from Google Drive
-ensure
-joblib
-python-box
+
+# Utilities
+gdown==5.1.0        # Downloading files from Google Drive
+ensure==1.0.3       # Type safety helpers (verify if needed)
+joblib==1.3.2
+python-box==7.1.1
+
 # Object detection models
 ultralytics==8.3.78
-opencv-python==4.9.0
-Pillow==10.2.0  
-numpy==1.26.4  
-pandas==2.2.0  
-labelme==5.2.1  
-scipy==1.12.0  
-matplotlib==3.8.3  
-seaborn==0.13.2  
-Flask==3.0.2  
-Flask-Cors==4.0.0  
-gunicorn==21.2.0  
-gradio==4.18.0  
-tqdm==4.66.2  # Progress bars
-pyyaml==6.0.1  # Config management
+
+# Image processing
+opencv-python==4.9.0.80
+Pillow==10.2.0
+
+# Data handling
+numpy==1.26.4
+pandas==2.2.0
+
+# Annotation tools
+labelme==5.2.1
+
+# Deep learning utilities
+scipy==1.12.0
+matplotlib==3.8.3
+seaborn==0.13.2
+
+# Flask for deployment
+Flask==3.0.2
+Flask-Cors==4.0.0
+
+# Miscellaneous
+tqdm==4.66.2       # Progress bars
+pyyaml==6.0.1      # Config management
