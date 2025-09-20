@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Object Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Face Musk Detection</h1>
+        
+        <h2>Live Webcam Detection</h2>
+        <img src="{{ url_for('video_feed') }}" width="640px">
+        
+
+        <h2>Upload an Image for Detection</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if uploaded %}
+        <h3>Detected Image:</h3>
+        <img src="{{ image_url }}" alt="Processed Image" width="500px">
+        <img id="processed-image" src="{{ result_image }}" width="640px">
+        {% endif %}
+    </div>
+    <button onclick="toggleWebcam('start')">Start Webcam</button>
+<button onclick="toggleWebcam('stop')">Stop Webcam</button>
+
+<script>
+function toggleWebcam(action) {
+    fetch('/toggle_webcam', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: action })
+    })
+    .then(response => response.json())
+    .then(data => console.log(data.status));
+}
+</script>
+
+</body>
+</html>

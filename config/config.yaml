@@ -1,0 +1,13 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_url: https://drive.google.com/file/d/12OVcHSKODFeyqxndG2b0Un2nJSFuYi4u/view?usp=sharing
+  zip_path: artifacts/data_ingestion/data.zip
+  unzip_path: artifacts/data_ingestion
+
+prepare_base_model:
+   
+  root_dir: artifacts/prepare_base_model
+  base_model_path: artifacts/prepare_base_model/base_model.h5
+   
