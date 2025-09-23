@@ -4,7 +4,7 @@ import time
 import math
 
 
-cap = cv2.VideoCapture(0)  # For Webcam
+cap = cv2.VideoCapture(0)  # For Webcam 
 cap.set(3, 1280)
 cap.set(4, 720)
 

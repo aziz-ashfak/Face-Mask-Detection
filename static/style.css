@@ -26,40 +26,19 @@ body {
     color: var(--secondary);
     overflow: hidden;
     position: relative;
+    background: url('facemask-bg.jpg') no-repeat center center/cover;
 }
 
-/* =======================
-   Animated Background
-======================= */
-body::before,
-body::after {
+/* Overlay Gradient */
+body::before {
     content: "";
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(
-        from 180deg,
-        #1d2b64,
-        #f8cdda,
-        #2196f3,
-        #f48fb1,
-        #1d2b64
-    );
-    animation: spin 18s linear infinite;
-    z-index: -2;
-}
-
-body::after {
-    filter: blur(120px);
-    animation-duration: 28s;
-    opacity: 0.8;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(29,43,100,0.7), rgba(33,150,243,0.6));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: -1;
 }
 
 /* =======================
@@ -67,16 +46,16 @@ body::after {
 ======================= */
 .container {
     width: 90%;
-    max-width: 750px;
+    max-width: 700px;
     background: rgba(255, 255, 255, 0.12);
-    padding: 35px;
+    padding: 32px;
     border-radius: var(--radius);
     box-shadow: 0 8px 32px var(--shadow);
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.25);
-    transition: var(--transition);
     text-align: center;
+    transition: var(--transition);
     z-index: 1;
 }
 
@@ -91,15 +70,15 @@ h1, h2 {
     color: var(--white);
     margin-bottom: 15px;
     letter-spacing: 1px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
 }
 
 h1 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid rgba(255,255,255,0.4);
+    font-size: 2rem;
+    margin-bottom: 18px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
     display: inline-block;
-    padding-bottom: 8px;
+    padding-bottom: 6px;
 }
 
 /* =======================
@@ -109,7 +88,7 @@ form {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
     align-items: center;
 }
 
@@ -118,10 +97,10 @@ input[type="text"],
 textarea {
     padding: 14px;
     width: 100%;
-    max-width: 500px;
+    max-width: 480px;
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     color: var(--white);
     font-size: 1rem;
     outline: none;
@@ -136,7 +115,7 @@ textarea::placeholder {
 input:focus,
 textarea:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 12px rgba(76, 175, 239, 0.7);
+    box-shadow: 0 0 10px rgba(76, 175, 239, 0.7);
 }
 
 /* =======================
@@ -149,7 +128,7 @@ button {
     color: var(--white);
     cursor: pointer;
     border-radius: var(--radius);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: bold;
     letter-spacing: 0.5px;
     transition: var(--transition);
@@ -158,7 +137,7 @@ button {
 
 button:hover {
     background: var(--primary-dark);
-    transform: scale(1.08);
+    transform: scale(1.05);
     box-shadow: 0px 10px 22px rgba(33, 150, 243, 0.55);
 }
 
@@ -167,14 +146,14 @@ button:hover {
 ======================= */
 img {
     border-radius: var(--radius);
-    margin-top: 20px;
+    margin-top: 18px;
     max-width: 100%;
-    box-shadow: 0px 4px 14px var(--shadow);
+    box-shadow: 0px 4px 12px var(--shadow);
     transition: var(--transition);
 }
 
 img:hover {
-    transform: scale(1.04);
+    transform: scale(1.03);
 }
 
 /* =======================
@@ -183,15 +162,16 @@ img:hover {
 @media (max-width: 768px) {
     .container {
         width: 95%;
-        padding: 20px;
+        padding: 22px;
     }
 
     h1 {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
     }
 
     button {
         width: 100%;
     }
 }
+
 
